@@ -1,5 +1,5 @@
 {
-    "name": "RodrigoLuna97/ecommerce",
+    "name": "rodrigoluna97/ecommerce",
     "authors": [
         {
             "name": "Rodrigo Luna",
@@ -13,7 +13,8 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\hcodebr\\php-classes\\src"
+            "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
+            
         }
     }
 }
