@@ -8,19 +8,19 @@ class Mailer{
 
 	const USERNAME = "phpmailer7@gmail.com";
 	const PASSWORD = "php741852";
-	const NAME_FROM = "Hcode Store"
+	const NAME_FROM = "Hcode Store";
 
 	private $mail;
 
-	public function __construct($toAdress, $toName, $subjetc, $tpLName, $data = array()){
+	public function __construct($toAdress, $toName, $subject, $tplName, $data = array()){
 
 		$config = array(
-	  "tpl_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views/email",
+	  "tpl_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views/email/",
 	  "cache_dir"   => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 	  "debug"       => false // set to false to improve the speed
 	 );	
 
-		Tpl::configure( $config );
+		Tpl::configure($config);
 
 		$tpl = new Tpl;
 
@@ -31,7 +31,7 @@ class Mailer{
 		$html = $tpl->draw($tplName, true);
 
 		//Create a new PHPMailer instance
-		$this->$this->mail = new \PHPMailer;
+		$this->mail = new \PHPMailer;
 
 		//Tell PHPMailer to use SMTP
 		$this->mail->isSMTP();
@@ -53,6 +53,16 @@ class Mailer{
 
 		//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
 		$this->mail->Port = 587;
+
+		
+		$this->mail->isSMTP();
+		$this->mail->SMTPOptions = array(
+   	 	'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    		)
+		);
 
 		//Set the encryption system to use - ssl (deprecated) or tls
 		$this->mail->SMTPSecure = 'tls';
@@ -85,7 +95,6 @@ class Mailer{
 		//Replace the plain text body with one created manually
 		$this->mail->AltBody = 'Opa, testando de novo';
 
-		
 }
 
 	public function send(){
