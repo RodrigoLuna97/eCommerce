@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
               <label for="nrphone">Telefone</label>
-              <input type="tel" class="form-control" id="nrphone" name="nrphone" placeholder="Digite o telefone">
+              <input type="text" class="form-control" id="nrphone" name="nrphone" placeholder="Digite o telefone">
             </div>
             <div class="form-group">
               <label for="desemail">E-mail</label>
